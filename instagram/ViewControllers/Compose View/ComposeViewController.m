@@ -36,6 +36,12 @@
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
+- (IBAction)didTapPostImage:(id)sender {
+    // Show selection screen
+    // Get the selected image from that screen
+    // Set the imageview.image to the selected image
+}
+
 - (void)sharePost {
     
 }

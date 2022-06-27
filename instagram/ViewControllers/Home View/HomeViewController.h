@@ -10,6 +10,8 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "ViewUtils.h"
+#import "PostTableCell.h"
+#import "PostFeedTable.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

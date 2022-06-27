@@ -7,7 +7,7 @@
 
 #import "HomeViewController.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -34,7 +34,13 @@
     }];
 }
 
-- (IBAction)didTapCompose:(id)sender {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // FIXME: Get number of posts to load
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    PostTableCell *postCell = [tableView dequeueReusableCellWithIdentifier:@"PostTableCell"];
+    // FIXME: idk yet
 }
 
 /*

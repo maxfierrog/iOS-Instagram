@@ -23,6 +23,8 @@
 		985FC5A2286A2A1B0023F5FE /* instagramUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 985FC5A1286A2A1B0023F5FE /* instagramUITests.m */; };
 		985FC5A4286A2A1B0023F5FE /* instagramUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 985FC5A3286A2A1B0023F5FE /* instagramUITestsLaunchTests.m */; };
 		98E01084286A4F9E00A8850E /* ViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E01083286A4F9E00A8850E /* ViewUtils.m */; };
+		98E0108B286A796C00A8850E /* PostTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E0108A286A796C00A8850E /* PostTableCell.m */; };
+		98E0108E286A799200A8850E /* PostFeedTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E0108D286A799200A8850E /* PostFeedTable.m */; };
 		C528D4F432BE5843F30C2B7F /* Pods_instagram_instagramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79CF7E16ACD33BD7CE6159C3 /* Pods_instagram_instagramUITests.framework */; };
 		EBAFD8091F7CF4C0B29C09FF /* Pods_instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B07E90C6826B9CE0670A33 /* Pods_instagram.framework */; };
 /* End PBXBuildFile section */
@@ -77,6 +79,10 @@
 		985FC5A3286A2A1B0023F5FE /* instagramUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = instagramUITestsLaunchTests.m; sourceTree = "<group>"; };
 		98E01082286A4F9E00A8850E /* ViewUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewUtils.h; sourceTree = "<group>"; };
 		98E01083286A4F9E00A8850E /* ViewUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewUtils.m; sourceTree = "<group>"; };
+		98E01089286A796C00A8850E /* PostTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostTableCell.h; sourceTree = "<group>"; };
+		98E0108A286A796C00A8850E /* PostTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostTableCell.m; sourceTree = "<group>"; };
+		98E0108C286A799200A8850E /* PostFeedTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostFeedTable.h; sourceTree = "<group>"; };
+		98E0108D286A799200A8850E /* PostFeedTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostFeedTable.m; sourceTree = "<group>"; };
 		B07636F4107D31C117B457DF /* Pods-instagram-instagramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagram-instagramUITests.release.xcconfig"; path = "Target Support Files/Pods-instagram-instagramUITests/Pods-instagram-instagramUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B55FE61BF87B2B35A0B76E5C /* Pods-instagram-instagramUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagram-instagramUITests.debug.xcconfig"; path = "Target Support Files/Pods-instagram-instagramUITests/Pods-instagram-instagramUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C44BE595AC5ECE1E1B03B46C /* Pods-instagramTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagramTests.release.xcconfig"; path = "Target Support Files/Pods-instagramTests/Pods-instagramTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +165,7 @@
 			children = (
 				98424E09286A412000110BE1 /* HomeViewController.h */,
 				98424E0A286A412000110BE1 /* HomeViewController.m */,
+				98E01085286A78B600A8850E /* Feed Table */,
 			);
 			path = "Home View";
 			sourceTree = "<group>";
@@ -247,6 +254,17 @@
 				98E01083286A4F9E00A8850E /* ViewUtils.m */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		98E01085286A78B600A8850E /* Feed Table */ = {
+			isa = PBXGroup;
+			children = (
+				98E01089286A796C00A8850E /* PostTableCell.h */,
+				98E0108A286A796C00A8850E /* PostTableCell.m */,
+				98E0108C286A799200A8850E /* PostFeedTable.h */,
+				98E0108D286A799200A8850E /* PostFeedTable.m */,
+			);
+			path = "Feed Table";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -495,6 +513,8 @@
 				985FC580286A2A1B0023F5FE /* SceneDelegate.m in Sources */,
 				98424E0F286A414200110BE1 /* ComposeViewController.m in Sources */,
 				98424E06286A338B00110BE1 /* LoginViewController.m in Sources */,
+				98E0108B286A796C00A8850E /* PostTableCell.m in Sources */,
+				98E0108E286A799200A8850E /* PostFeedTable.m in Sources */,
 				98424E0B286A412000110BE1 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
