@@ -137,10 +137,10 @@
 		98424E07286A339200110BE1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				98424E08286A33B800110BE1 /* Login View */,
 				98424E14286A416100110BE1 /* Profile View */,
 				98424E13286A415000110BE1 /* Compose View */,
 				98424E0C286A412400110BE1 /* Home View */,
-				98424E08286A33B800110BE1 /* Login View */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

@@ -22,11 +22,6 @@
             configuration.server = @"https://parseapi.back4app.com";
         }];
     [Parse initializeWithConfiguration:config];
-    if (PFUser.currentUser) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
-        // FIXME: This line does not work, suspect it is because of bad ID ^
-    }
     return YES;
 }
 
