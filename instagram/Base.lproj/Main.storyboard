@@ -39,7 +39,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaj-EC-0vU">
                                 <rect key="frame" x="134.66666666666666" y="243" width="121" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="121" id="cMB-Eg-NoL"/>
                                     <constraint firstAttribute="height" constant="36" id="jJB-d5-quX"/>
                                 </constraints>
                                 <attributedString key="attributedText">
@@ -106,6 +105,7 @@
                             <constraint firstItem="bBe-Kn-lXg" firstAttribute="top" secondItem="JOb-wd-uf3" secondAttribute="bottom" constant="40" id="K9V-8k-08N"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JOb-wd-uf3" secondAttribute="trailing" constant="70" id="LJd-00-kM3"/>
                             <constraint firstItem="xaj-EC-0vU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-161" id="LmI-iy-Dgl"/>
+                            <constraint firstItem="yft-Ox-dro" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bBe-Kn-lXg" secondAttribute="trailing" constant="50" id="Piu-9I-1ik"/>
                             <constraint firstItem="yft-Ox-dro" firstAttribute="trailing" secondItem="JOb-wd-uf3" secondAttribute="trailing" id="U94-yE-q51"/>
                             <constraint firstItem="xaj-EC-0vU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UL0-II-dcI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9lv-LZ-OcH" secondAttribute="trailing" constant="70" id="Vb9-nV-l0f"/>
@@ -135,17 +135,55 @@
                     <view key="view" contentMode="scaleToFill" id="OO8-bE-wdS">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OfI-Bf-31v">
+                                <rect key="frame" x="15" y="71" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="5hc-Ro-cxQ"/>
+                                    <constraint firstAttribute="height" constant="150" id="r0H-DU-KC7"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Post caption" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZYF-4I-S62">
+                                <rect key="frame" x="173" y="71" width="202" height="150"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="cdq-Ds-0Vw"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="yS5-9n-Vrr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yS5-9n-Vrr" firstAttribute="trailing" secondItem="ZYF-4I-S62" secondAttribute="trailing" constant="15" id="9XI-Ge-sWz"/>
+                            <constraint firstItem="ZYF-4I-S62" firstAttribute="top" secondItem="yS5-9n-Vrr" secondAttribute="top" constant="15" id="UTr-Wb-SET"/>
+                            <constraint firstItem="OfI-Bf-31v" firstAttribute="top" secondItem="yS5-9n-Vrr" secondAttribute="top" constant="15" id="luD-Jv-Gyg"/>
+                            <constraint firstItem="OfI-Bf-31v" firstAttribute="leading" secondItem="yS5-9n-Vrr" secondAttribute="leading" constant="15" id="m3l-F7-YUV"/>
+                            <constraint firstItem="ZYF-4I-S62" firstAttribute="leading" secondItem="OfI-Bf-31v" secondAttribute="trailing" constant="8" symbolic="YES" id="sdn-p0-mKe"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dNJ-A7-b77">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="9dj-vk-cbT"/>
-                        <barButtonItem key="rightBarButtonItem" title="Share" id="pHD-tB-I4F"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="9dj-vk-cbT">
+                            <connections>
+                                <action selector="didTapCancel:" destination="AUC-LF-YVh" id="oif-cn-6qU"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="pHD-tB-I4F">
+                            <connections>
+                                <action selector="didTapShare:" destination="AUC-LF-YVh" id="Ehc-mh-tVS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="postCaptionField" destination="ZYF-4I-S62" id="b4M-B0-g9a"/>
+                        <outlet property="postImageView" destination="OfI-Bf-31v" id="3n4-dN-J5c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AtQ-c1-6bO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3073.913043478261" y="1305.8035714285713"/>
+            <point key="canvasLocation" x="3073.8461538461538" y="1305.2132701421801"/>
         </scene>
         <!--Home Feed-->
         <scene sceneID="AVs-1D-sSj">
@@ -271,6 +309,9 @@
         <image name="feed_tab" width="25" height="25"/>
         <image name="insta_camera_btn" width="25" height="25"/>
         <image name="profile_tab" width="25" height="25"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -27,11 +27,9 @@
             NSLog(@"Failed to log out user");
             [self presentViewController:logOutFailAlert animated:YES completion:nil];
         } else {
-//            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
             self.view.window.rootViewController = loginViewController;
-            // FIXME: this is not working ^
         }
     }];
 }

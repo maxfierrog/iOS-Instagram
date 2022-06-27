@@ -25,8 +25,8 @@
 }
 
 - (IBAction)didTapLogin:(id)sender {
-    UIAlertController *invalidValuesForLogin = [ViewUtils getAlertController:@"Please enter a valid username and password"
-                                                                  warningHeader:@"Couldn't Log In"
+    UIAlertController *invalidValuesForLogin = [ViewUtils getAlertController:@"Please enter both a username and a password"
+                                                                  warningHeader:@"Missing Credentials"
                                                                          action:^{}];
     if ([self canLogin]) {
         [self loginUser];
@@ -36,8 +36,8 @@
 }
 
 - (IBAction)didTapRegister:(id)sender {
-    UIAlertController *invalidValuesForRegister = [ViewUtils getAlertController:@"Please enter a valid email, username, and password"
-                                                                  warningHeader:@"Couldn't Register User"
+    UIAlertController *invalidValuesForRegister = [ViewUtils getAlertController:@"Please enter an email, username, and password"
+                                                                  warningHeader:@"Missing Credentials"
                                                                          action:^{}];
     if ([self canRegister]) {
         [self registerUser];
@@ -51,6 +51,12 @@
     NSString *password = self.passwordTextField.text;
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
+            UIAlertController *registerErrorAlert = [ViewUtils getAlertController:error.localizedDescription
+                                                                          warningHeader:@"Login Error"
+                                                                                 action:^{
+                // TODO: Do some red warning thing to show that there was an error visually
+            }];
+            [self presentViewController:registerErrorAlert animated:YES completion:nil];
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
             NSLog(@"User logged in successfully");
@@ -66,6 +72,12 @@
     newUser.password = self.passwordTextField.text;
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
+            UIAlertController *loginErrorAlert = [ViewUtils getAlertController:error.localizedDescription
+                                                                          warningHeader:@"Registration Error"
+                                                                                 action:^{
+                // TODO: Do some red warning thing to show that there was an error visually
+            }];
+            [self presentViewController:loginErrorAlert animated:YES completion:nil];
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             NSLog(@"User registered successfully");

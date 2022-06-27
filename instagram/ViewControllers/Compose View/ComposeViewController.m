@@ -8,7 +8,8 @@
 #import "ComposeViewController.h"
 
 @interface ComposeViewController ()
-
+@property (weak, nonatomic) IBOutlet UIImageView *postImageView;
+@property (weak, nonatomic) IBOutlet UITextView *postCaptionField;
 @end
 
 @implementation ComposeViewController
@@ -16,6 +17,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (IBAction)didTapShare:(id)sender {
+    UIAlertController *failedToSharePostAlert = [ViewUtils getAlertController:@"Please include an image for your post"
+                                                                warningHeader:@"Post Invalid"
+                                                                       action:^{}];
+    if ([self canSharePost]) {
+        [self sharePost];
+        NSLog(@"Success sharing post");
+    } else {
+        NSLog(@"Failed to share post");
+        [self presentViewController:failedToSharePostAlert animated:YES completion:nil];
+    }
+}
+
+- (IBAction)didTapCancel:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
+}
+
+- (void)sharePost {
+    
+}
+
+- (BOOL)canSharePost {
+    // FIXME: Determine if the user has selected an image yet (bottom condition doesn't work)
+    return ![self.postImageView.image isEqual:nil] && ![self.postCaptionField.text isEqual:@""];
 }
 
 /*
