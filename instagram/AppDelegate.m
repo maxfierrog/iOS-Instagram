@@ -6,6 +6,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
@@ -15,7 +16,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    ParseClientConfiguration *config = [ParseClientConfiguration  configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+
+            configuration.applicationId = @"jGpc7WjsJDFDI5IOzDM6su2ZJpEgnFlsS0dhW6dR";
+            configuration.clientKey = @"57FZcKJWBVYq3YLvteFZVxIKHFG7SQNyK50BJskc";
+            configuration.server = @"https://parseapi.back4app.com";
+        }];
+        [Parse initializeWithConfiguration:config];
     return YES;
 }
 
