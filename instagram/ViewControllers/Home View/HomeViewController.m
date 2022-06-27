@@ -6,6 +6,7 @@
 //
 
 #import "HomeViewController.h"
+#import "ViewUtils.h"
 
 @interface HomeViewController ()
 
@@ -15,12 +16,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.currentUser = PFUser.currentUser;
 }
 
 - (IBAction)didTapLogOut:(id)sender {
-    // TODO: Unauthenticate
-
+    UIAlertController *logOutFailAlert = [ViewUtils getAlertController:@"Please try again later"
+                                                         warningHeader:@"Error Logging Out"
+                                                                action:^{}];
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Failed to log out user");
+            [self presentViewController:logOutFailAlert animated:YES completion:nil];
+        } else {
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            appDelegate.window.rootViewController = loginViewController;
+            // FIXME: this is not working ^
+        }
+    }];
 }
 
 - (IBAction)didTapCompose:(id)sender {

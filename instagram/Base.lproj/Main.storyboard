@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -150,7 +150,7 @@
         <!--Home Feed-->
         <scene sceneID="AVs-1D-sSj">
             <objects>
-                <viewController id="kEV-Wi-tbC" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="kEV-Wi-tbC" customClass="HomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bs1-pc-s4o">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -191,10 +191,10 @@
             </objects>
             <point key="canvasLocation" x="4747.826086956522" y="1305.8035714285713"/>
         </scene>
-        <!--Feed-->
+        <!--Home Feed-->
         <scene sceneID="gkK-Mn-jDF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nBt-xz-Fjq" sceneMemberID="viewController">
+                <navigationController title="Home Feed" automaticallyAdjustsScrollViewInsets="NO" id="nBt-xz-Fjq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Feed" image="feed_tab" id="HKB-IG-zaX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JRo-5h-o7h">

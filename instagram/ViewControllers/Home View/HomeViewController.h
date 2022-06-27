@@ -7,6 +7,8 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "LoginViewController.h"
+#import "AppDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

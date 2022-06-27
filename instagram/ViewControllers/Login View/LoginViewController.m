@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
-@property PFUser *currentUser;
 @end
 
 @implementation LoginViewController
@@ -90,10 +89,7 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UITabBarController *tabBarController = [segue destinationViewController];
-    UIViewController *selectedVC = [tabBarController selectedViewController];
-    HomeViewController *feedVC = (HomeViewController *)selectedVC;
-    feedVC.currentUser = self.currentUser;
+    // Fine as empty.
 }
 
 @end
