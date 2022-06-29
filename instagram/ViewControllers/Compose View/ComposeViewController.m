@@ -7,28 +7,26 @@
 
 #import "ComposeViewController.h"
 
-@interface ComposeViewController ()
+@interface ComposeViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *postImageView;
 @property (weak, nonatomic) IBOutlet UITextView *postCaptionField;
+@property BOOL hasChosenImage;
 @end
 
 @implementation ComposeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (IBAction)didTapShare:(id)sender {
-    UIAlertController *failedToSharePostAlert = [ViewUtils getAlertController:@"Please include an image for your post"
+    UIAlertController *failedToSharePostAlert = [ViewUtils getAlertController:@"Please include both an image and caption for your post"
                                                                 warningHeader:@"Post Invalid"
                                                                        action:^{}];
-    if ([self canSharePost]) {
-        [self sharePost];
-        NSLog(@"Success sharing post");
-    } else {
-        NSLog(@"Failed to share post");
+    if ([self cannotSharePost]) {
         [self presentViewController:failedToSharePostAlert animated:YES completion:nil];
+    } else {
+        [self sharePost];
     }
 }
 
@@ -36,19 +34,38 @@
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
-- (IBAction)didTapPostImage:(id)sender {
-    // Show selection screen
-    // Get the selected image from that screen
-    // Set the imageview.image to the selected image
+- (IBAction)didTapChooseImage:(id)sender {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else {
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    // UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    editedImage = [ViewUtils resizeImage:editedImage withSize:CGSizeMake(500.0f, 500.0f)];
+    self.postImageView.image = editedImage;
+    self.hasChosenImage = YES;
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)sharePost {
-    
+    [Post postUserImage:self.postImageView.image withCaption:self.postCaptionField.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    }];
+    // Do this async?
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
-- (BOOL)canSharePost {
+- (BOOL)cannotSharePost {
     // FIXME: Determine if the user has selected an image yet (bottom condition doesn't work)
-    return ![self.postImageView.image isEqual:nil] && ![self.postCaptionField.text isEqual:@""];
+    return !self.hasChosenImage || [self.postCaptionField.text isEqual:@""];
 }
 
 /*

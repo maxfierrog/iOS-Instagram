@@ -35,12 +35,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // FIXME: Get number of posts to load
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostTableCell *postCell = [tableView dequeueReusableCellWithIdentifier:@"PostTableCell"];
-    // FIXME: idk yet
+    // Do stuff to post cell.
+    return postCell;
 }
 
 /*

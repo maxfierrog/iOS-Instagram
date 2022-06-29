@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIAlertController *)getAlertController:(NSString *)warningText
                             warningHeader:(NSString *)warningHeader
                                    action:(void (^)(void))actionAfterOK;
++ (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size;
 
 @end
 

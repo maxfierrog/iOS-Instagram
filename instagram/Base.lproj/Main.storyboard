@@ -143,9 +143,6 @@
                                     <constraint firstAttribute="width" constant="150" id="5hc-Ro-cxQ"/>
                                     <constraint firstAttribute="height" constant="150" id="r0H-DU-KC7"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Nau-Vp-uWL" appends="YES" id="ZNz-kQ-ecS"/>
-                                </connections>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Post caption" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZYF-4I-S62">
                                 <rect key="frame" x="173" y="71" width="202" height="150"/>
@@ -157,6 +154,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9C9-zQ-bRr">
+                                <rect key="frame" x="16" y="71" width="149" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="camera.on.rectangle" catalog="system"/>
+                                <connections>
+                                    <action selector="didTapChooseImage:" destination="AUC-LF-YVh" eventType="touchUpInside" id="bvn-x9-dCi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yS5-9n-Vrr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -186,11 +192,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AtQ-c1-6bO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Nau-Vp-uWL">
-                    <connections>
-                        <action selector="didTapPostImage:" destination="AUC-LF-YVh" id="4eI-uf-i9r"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3073.8461538461538" y="1305.2132701421801"/>
         </scene>
@@ -385,6 +386,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera.on.rectangle" catalog="system" width="128" height="96"/>
         <image name="feed_tab" width="25" height="25"/>
         <image name="insta_camera_btn" width="25" height="25"/>
         <image name="profile_tab" width="25" height="25"/>
