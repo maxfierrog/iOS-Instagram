@@ -5,9 +5,9 @@
 //  Created by maxfierro on 6/28/22.
 //
 
-#import "Post.h"
+#import "PostModel.h"
 
-@implementation Post
+@implementation PostModel
 
 @dynamic postID;
 @dynamic postAuthor;
@@ -17,11 +17,12 @@
 @dynamic userID;
 
 + (void) postUserImage:(UIImage * _Nullable)image withCaption:(NSString * _Nullable)caption withCompletion:(PFBooleanResultBlock _Nullable)completion {
- Post *newPost = [Post new];
- newPost.postImage = [self getPFFileFromImage:image];
- newPost.postAuthor = [PFUser currentUser];
- newPost.postCaption = caption;
- [newPost saveInBackgroundWithBlock:completion];
+    PostModel *newPost = [PostModel new];
+    newPost.postImage = [self getPFFileFromImage:image];
+    newPost.postAuthor = [PFUser currentUser];
+    newPost.postCaption = caption;
+    newPost.postTime = [NSDate now];
+    [newPost saveInBackgroundWithBlock:completion];
 }
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
@@ -36,7 +37,7 @@
 }
 
 + (nonnull NSString *)parseClassName {
-    return @"Post";
+    return @"PostModel";
 }
 
 @end

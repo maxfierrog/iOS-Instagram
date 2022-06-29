@@ -8,14 +8,18 @@
 #import "HomeViewController.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
-
+@property (weak, nonatomic) IBOutlet UITableView *feedTableView;
+@property NSArray *postArray;
 @end
 
 @implementation HomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.currentUser = PFUser.currentUser;
+    self.feedTableView.delegate = self;
+    self.feedTableView.dataSource = self;
+    UIRefreshControl *refreshControl = [ViewUtils getRefreshControl:self refreshSelector:@selector(refreshPostArray:) UIView:self.feedTableView];
+    [self refreshPostArray:refreshControl];
 }
 
 - (IBAction)didTapLogOut:(id)sender {
@@ -34,24 +38,44 @@
     }];
 }
 
+- (void)refreshPostArray:(UIRefreshControl *)refreshControl {
+    PFQuery *query = [PostModel query];
+    [query includeKey:@"postAuthor"];
+    [query orderByDescending:@"createdAt"];
+    query.limit = 20;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            self.postArray = posts;
+            [self.feedTableView reloadData];
+        } else {
+            UIAlertController *postLoadFailAlert = [ViewUtils getAlertController:error.localizedDescription
+                                                                   warningHeader:@"Error Loading Feed"
+                                                                          action:^{}];
+            [self presentViewController:postLoadFailAlert animated:YES completion:nil];
+        }
+    }];
+    [refreshControl endRefreshing];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return self.postArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostTableCell *postCell = [tableView dequeueReusableCellWithIdentifier:@"PostTableCell"];
-    // Do stuff to post cell.
+    postCell.myPost = self.postArray[indexPath.row];
+    [postCell refreshCellContents];
     return postCell;
 }
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([sender isKindOfClass:[PostTableCell class]]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        PostDetailsViewController *detailsVC = (PostDetailsViewController *)navigationController.topViewController;
+        detailsVC.delegate = sender;
+    }
 }
-*/
 
 @end

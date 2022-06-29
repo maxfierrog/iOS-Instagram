@@ -11,12 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ViewUtils : NSObject
-
 + (UIAlertController *)getAlertController:(NSString *)warningText
                             warningHeader:(NSString *)warningHeader
                                    action:(void (^)(void))actionAfterOK;
 + (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size;
-
++ (UIRefreshControl *)getRefreshControl:(UIViewController *)viewController refreshSelector:(SEL)refreshSelector UIView:(UIView *)UIView;
 @end
 
 NS_ASSUME_NONNULL_END

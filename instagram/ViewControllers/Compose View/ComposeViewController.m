@@ -57,7 +57,7 @@
 }
 
 - (void)sharePost {
-    [Post postUserImage:self.postImageView.image withCaption:self.postCaptionField.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    [PostModel postUserImage:self.postImageView.image withCaption:self.postCaptionField.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
     }];
     // Do this async?
     [self dismissViewControllerAnimated:true completion:nil];

@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Post : PFObject<PFSubclassing>
+@interface PostModel : PFObject<PFSubclassing>
 @property PFUser *postAuthor;
 @property PFFileObject *postImage;
 @property NSString *postCaption;

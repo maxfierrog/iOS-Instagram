@@ -11,12 +11,11 @@
 #import "AppDelegate.h"
 #import "ViewUtils.h"
 #import "PostTableCell.h"
-#import "PostFeedTable.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeViewController : UIViewController
-@property PFUser *currentUser;
+
 @end
 
 NS_ASSUME_NONNULL_END

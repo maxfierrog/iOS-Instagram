@@ -98,10 +98,4 @@
     return ![self.emailTextField.text isEqual:@""] && [self canLogin];
 }
 
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Fine as empty.
-}
-
 @end
