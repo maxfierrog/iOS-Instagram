@@ -48,7 +48,6 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    // UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     editedImage = [ViewUtils resizeImage:editedImage withSize:CGSizeMake(500.0f, 500.0f)];
     self.postImageView.image = editedImage;
@@ -59,12 +58,11 @@
 - (void)sharePost {
     [PostModel postUserImage:self.postImageView.image withCaption:self.postCaptionField.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
     }];
-    // Do this async?
+    // FIXME: Should this be done asynchronously?
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
 - (BOOL)cannotSharePost {
-    // FIXME: Determine if the user has selected an image yet (bottom condition doesn't work)
     return !self.hasChosenImage || [self.postCaptionField.text isEqual:@""];
 }
 

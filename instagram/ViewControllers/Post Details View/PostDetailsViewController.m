@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *postedTimeAgoLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *mainPostImage;
 @property (weak, nonatomic) IBOutlet UILabel *postCaption;
+@property NSArray *queryResult;
 @end
 
 @implementation PostDetailsViewController
@@ -30,6 +31,25 @@
     self.mainPostImage.file = self.myPost.postImage;
     self.postCaption.text = self.myPost.postCaption;
     self.postedTimeAgoLabel.textColor = [UIColor lightGrayColor];
+    PFQuery *query = [UserData query];
+    [query whereKey:@"user" equalTo:self.myPost.postAuthor.username];
+    [query orderByDescending:@"createdAt"];
+    query.limit = 1;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *dataRows, NSError *error) {
+        if (error == nil) {
+            self.queryResult = dataRows;
+            NSLog(@"%@", self.queryResult);
+            if (self.queryResult.count > 0) {
+                UserData *result = self.queryResult[0];
+                self.authorProfilePicture.file = result.profilePicture;
+                self.authorProfilePicture.layer.cornerRadius = self.authorProfilePicture.frame.size.width / 2;
+                self.authorProfilePicture.clipsToBounds = YES;
+                [self.authorProfilePicture loadInBackground];
+            } else {
+                self.authorProfilePicture.file = nil;
+            }
+        }
+    }];
     [self.mainPostImage loadInBackground];
 }
 

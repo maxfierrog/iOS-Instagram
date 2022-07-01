@@ -21,7 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (IBAction)didTapLogin:(id)sender {
@@ -49,13 +48,12 @@
 - (void)loginUser {
     NSString *username = self.usernameTextField.text;
     NSString *password = self.passwordTextField.text;
+    // FIXME: Strong reference to self in block of code below, how fix
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
             UIAlertController *registerErrorAlert = [ViewUtils getAlertController:error.localizedDescription
                                                                           warningHeader:@"Login Error"
-                                                                                 action:^{
-                // TODO: Do some red warning thing to show that there was an error visually
-            }];
+                                                                                 action:^{}];
             [self presentViewController:registerErrorAlert animated:YES completion:nil];
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
@@ -70,18 +68,19 @@
     newUser.username = self.usernameTextField.text;
     newUser.email = self.emailTextField.text;
     newUser.password = self.passwordTextField.text;
+    // FIXME: Strong reference to self in block of code below, how fix
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
             UIAlertController *loginErrorAlert = [ViewUtils getAlertController:error.localizedDescription
                                                                           warningHeader:@"Registration Error"
-                                                                                 action:^{
-                // TODO: Do some red warning thing to show that there was an error visually
-            }];
+                                                                                 action:^{}];
             [self presentViewController:loginErrorAlert animated:YES completion:nil];
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             NSLog(@"User registered successfully");
-            [self segueToHomeFeed];
+            [UserData uploadProfilePicture:[UIImage imageNamed:@"default-profile-picture"] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                [self segueToHomeFeed];
+            }];
         }
     }];
 }

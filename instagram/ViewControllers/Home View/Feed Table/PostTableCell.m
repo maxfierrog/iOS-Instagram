@@ -13,13 +13,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *postedThisLongAgoLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *postMainImage;
 @property (weak, nonatomic) IBOutlet UILabel *postCaption;
+@property NSArray *queryResult;
 @end
 
 @implementation PostTableCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self refreshCellContents];
 }
 
 - (PostModel *)getPost {
@@ -32,6 +32,27 @@
     self.postMainImage.file = self.myPost.postImage;
     self.postCaption.text = self.myPost.postCaption;
     self.postedThisLongAgoLabel.textColor = [UIColor lightGrayColor];
+    self.authorProfilePicture.layer.cornerRadius = self.authorProfilePicture.frame.size.width / 2;
+    self.authorProfilePicture.clipsToBounds = YES;
+    PFQuery *query = [UserData query];
+    [query whereKey:@"user" equalTo:self.authorUserName.text];
+    [query orderByDescending:@"createdAt"];
+    query.limit = 1;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *dataRows, NSError *error) {
+        if (error == nil) {
+            self.queryResult = dataRows;
+            NSLog(@"%@", self.queryResult);
+            if (self.queryResult.count > 0) {
+                UserData *result = self.queryResult[0];
+                self.authorProfilePicture.file = result.profilePicture;
+                self.authorProfilePicture.layer.cornerRadius = self.authorProfilePicture.frame.size.width / 2;
+                self.authorProfilePicture.clipsToBounds = YES;
+                [self.authorProfilePicture loadInBackground];
+            } else {
+                self.authorProfilePicture.file = nil;
+            }
+        }
+    }];
     [self.postMainImage loadInBackground];
 }
 

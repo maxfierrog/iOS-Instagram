@@ -11,6 +11,7 @@
 #import "DateTools.h"
 #import "PostModel.h"
 #import "PostDetailsViewController.h"
+#import "ViewUtils.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

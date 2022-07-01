@@ -26,6 +26,7 @@
     UIAlertController *logOutFailAlert = [ViewUtils getAlertController:@"Please try again later"
                                                          warningHeader:@"Error Logging Out"
                                                                 action:^{}];
+    // FIXME: Strong self reference
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         if (error != nil) {
             NSLog(@"Failed to log out user");
@@ -43,6 +44,7 @@
     [query includeKey:@"postAuthor"];
     [query orderByDescending:@"createdAt"];
     query.limit = 20;
+    // FIXME: Strong self reference
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.postArray = posts;

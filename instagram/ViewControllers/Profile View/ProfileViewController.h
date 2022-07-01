@@ -7,11 +7,14 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "UserData.h"
+#import "PFImageView.h"
+#import "ViewUtils.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ProfileViewController : UIViewController
-@property PFUser *currentUser;
+@property UserData *user;
 @end
 
 NS_ASSUME_NONNULL_END
