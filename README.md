@@ -46,7 +46,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-
+https://user-images.githubusercontent.com/69845191/176809006-1e09fea9-55b2-409f-8f49-0c6e3d869ea5.mp4
 
 ## Notes
 
