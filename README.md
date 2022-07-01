@@ -18,14 +18,14 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
+- [X] Show the username and creation time for each post
+- User Profiles:
+  - [X] Allow the logged in user to add a profile photo
+  - [X] Display the profile photo with each post
+  - [ ] Tapping on a post's username or profile photo goes to that user's profile page
 - [ ] Run your app on your phone and use the camera to take the photo
 - [ ] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling
-- [ ] Show the username and creation time for each post
 - [ ] User can use a Tab Bar to switch between a Home Feed tab (all posts) and a Profile tab (only posts published by the current user)
-- User Profiles:
-  - [ ] Allow the logged in user to add a profile photo
-  - [ ] Display the profile photo with each post
-  - [ ] Tapping on a post's username or profile photo goes to that user's profile page
 - [ ] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
 - [ ] User can comment on a post and see all comments for each post in the post details screen
 - [ ] User can like a post and see number of likes for each post in the post details screen
@@ -35,26 +35,18 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [X] User receives comprehensive error alerts for login and registration issues
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. I would like to explore the optimal database schema for this app
+2. Find out what tools I can use to style the UI
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [Kap](https://getkap.co/).
-
-## Credits
-
-List an 3rd party libraries, icons, graphics, or other assets you used in your app.
-
-- [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
 
 ## Notes
 
