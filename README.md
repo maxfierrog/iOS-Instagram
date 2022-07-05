@@ -2,11 +2,9 @@
 
 Instagram is a photo sharing app using Parse as its backend.
 
-Time spent: 13 hours spent in total
-
 ## User Stories
 
-The following **required** functionality is completed:
+The following functionality is completed:
 
 - [X] User can sign up to create a new account using Parse authentication
 - [X] User can log in and log out of his or her account
@@ -15,14 +13,13 @@ The following **required** functionality is completed:
 - [X] User can view the last 20 posts submitted to "Instagram"
 - [X] User can pull to refresh the last 20 posts submitted to "Instagram"
 - [X] User can tap a post to view post details, including timestamp and caption
-
-The following **optional** features are implemented:
-
 - [X] Show the username and creation time for each post
-- User Profiles:
-  - [X] Allow the logged in user to add a profile photo
-  - [X] Display the profile photo with each post
-  - [ ] Tapping on a post's username or profile photo goes to that user's profile page
+- [X] Allow the logged in user to add a profile photo
+- [X] Display the profile photo with each post
+
+Some things I could work on are:
+
+- [ ] Tapping on a post's username or profile photo goes to that user's profile page
 - [ ] Run your app on your phone and use the camera to take the photo
 - [ ] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling
 - [ ] User can use a Tab Bar to switch between a Home Feed tab (all posts) and a Profile tab (only posts published by the current user)
@@ -33,37 +30,6 @@ The following **optional** features are implemented:
 - [ ] Style the feed to look like the real Instagram feed
 - [ ] Implement a custom camera view
 
-The following **additional** features are implemented:
-
-- [X] User receives comprehensive error alerts for login and registration issues
-
-Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
-
-1. I would like to explore the optimal database schema for this app
-2. Find out what tools I can use to style the UI
-
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
-
 https://user-images.githubusercontent.com/69845191/176809006-1e09fea9-55b2-409f-8f49-0c6e3d869ea5.mp4
-
-## Notes
-
-Describe any challenges encountered while building the app.
-
-## License
-
-    Copyright [yyyy] [name of copyright owner]
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
